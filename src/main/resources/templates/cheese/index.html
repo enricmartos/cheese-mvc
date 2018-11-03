@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--Telling idea that this file will use thymeleaf
+structure, tags, etc
+We use the standard shtml, and all the tags must be closed-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title  th:text="${title}">Title</title>
+</head>
+<body>
+    <!-- TH syntax is similar as HTML regarding attributes-->
+    <h1 th:text="${title}"></h1>
+<p th:unless="${cheeses} and ${cheeses.size()}">no cheese</p>
+
+    <a href="/cheese/add">Add Cheese</a>
+<ul>
+    <!-- each attribute -> for loop definition
+    cheese: iterator variable -->
+    <li th:each="cheese : ${cheeses}"
+    th:text="${cheese}"></li>
+</ul>
+
+</body>
+</html>

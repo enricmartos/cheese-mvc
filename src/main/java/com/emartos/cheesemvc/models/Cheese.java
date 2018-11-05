@@ -1,10 +1,18 @@
 package com.emartos.cheesemvc.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+//This anotation says that this class
+//will be stored in a db as a table
+@Entity
 public class Cheese {
-
+    @Id //Id as a primary key column
+    @GeneratedValue //Hibernate will create this value
+    private int id;
     //Java Anotations API to validate our model
     //Spring boot will generate an error message in the view
     //if the requirements are not met
@@ -14,12 +22,10 @@ public class Cheese {
     //Error message customized
     @NotNull( message="Description must not be empty")
     private String description;
-    private int cheeseId;
-    //This field will belong to all instances of the class
-    private static int nextId = 1;
+
+    private CheeseType type;
 
     public Cheese(String name, String description) {
-        this(); //call the default constructor
         this.name = name;
         this.description = description;
     }
@@ -29,16 +35,10 @@ public class Cheese {
     //is there are many constructor it does not which is the
     //right one to be called
     public Cheese() {
-        cheeseId = nextId;
-        nextId++;
     }
-
-    public int getCheeseId() {
-        return cheeseId;
-    }
-
-    public void setCheeseId(int cheeseId) {
-        this.cheeseId = cheeseId;
+    //just the getter cause we don't want to change it
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -57,5 +57,11 @@ public class Cheese {
         this.description = description;
     }
 
+    public CheeseType getType() {
+        return type;
+    }
 
+    public void setType(CheeseType type) {
+        this.type = type;
+    }
 }

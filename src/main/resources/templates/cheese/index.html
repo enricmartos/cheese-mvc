@@ -16,6 +16,7 @@ file -> reusing common code-->
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Type</th>
     </tr>
 
     <!-- each attribute -> for loop definition
@@ -23,6 +24,7 @@ file -> reusing common code-->
     <tr th:each="cheese : ${cheeses}">
         <td th:text="${cheese.name}"></td>
         <td th:text="${cheese.description}"></td>
+        <td th:text="${cheese.type.name}"></td>
     </tr>
 </table>
 

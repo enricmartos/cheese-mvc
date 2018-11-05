@@ -1,7 +1,9 @@
 package com.emartos.cheesemvc.controllers;
 
 import com.emartos.cheesemvc.models.Cheese;
-import com.emartos.cheesemvc.models.CheeseData;
+import com.emartos.cheesemvc.models.CheeseType;
+import com.emartos.cheesemvc.models.data.CheeseDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 
 @Controller
 //Every method below will be routed after this root path (prefix)
@@ -21,6 +22,10 @@ public class CheeseController {
     //The controller should not be responsible for managing model objects
     //static make the list accessible for all methods of these class
 
+    //The framework will instatiate this class for us
+    @Autowired
+    private CheeseDao cheeseDao;
+
     //Request path: /cheese
     @RequestMapping(value="")
     public String index(Model model) {
@@ -28,7 +33,8 @@ public class CheeseController {
         //template
 
         //Attribute: key-value pair
-        model.addAttribute("cheeses", CheeseData.getAll());
+        //Return all the cheeses
+        model.addAttribute("cheeses", cheeseDao.findAll());
         model.addAttribute("title", "My Cheeses");
 
         //Just give the template name without extension
@@ -45,6 +51,7 @@ public class CheeseController {
         //The above and below lines are equivalent
         //The default attribute name will be the name of the class
         model.addAttribute(new Cheese());
+        model.addAttribute("cheeseTypes", CheeseType.values());
         return "cheese/add";
     }
 //
@@ -78,14 +85,14 @@ public class CheeseController {
             model.addAttribute("title", "Add Cheese");
             return "cheese/add";
         }
-        CheeseData.add(newCheese);
+        cheeseDao.save(newCheese);
         //Redirect to /cheese
         return "redirect:";
     }
 
     @RequestMapping(value="remove", method=RequestMethod.GET)
     public String displayRemoveCheeseForm(Model model) {
-        model.addAttribute("cheeses", CheeseData.getAll());
+        model.addAttribute("cheeses", cheeseDao.findAll());
         model.addAttribute("title", "Remove Cheese");
         return "cheese/remove";
 
@@ -95,7 +102,7 @@ public class CheeseController {
     public String processRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
         for (int cheeseId: cheeseIds) {
-            CheeseData.remove(cheeseId);
+            cheeseDao.deleteById(cheeseId);
         }
         return "redirect:";
     }

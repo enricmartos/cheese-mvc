@@ -22,7 +22,7 @@ public class CheeseController {
     //The controller should not be responsible for managing model objects
     //static make the list accessible for all methods of these class
 
-    //The framework will instatiate this class for us
+    //The framework will instantiate this class for us
     @Autowired
     private CheeseDao cheeseDao;
 

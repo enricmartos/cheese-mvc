@@ -69,7 +69,7 @@ public class CheeseController {
 
     @RequestMapping(value="add", method = RequestMethod.POST)
     //When spring sees the @Valid annotation will validate the
-    //oebject according to the constraints on the model class
+    //object according to the constraints on the model class
     //and put all the error inside the object errors
     public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese,
                                         Errors errors, Model model) {

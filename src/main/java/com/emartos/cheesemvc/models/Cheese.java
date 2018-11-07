@@ -6,14 +6,14 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-//This anotation says that this class
+//This annotation says that this class
 //will be stored in a db as a table
 @Entity
 public class Cheese {
     @Id //Id as a primary key column
     @GeneratedValue //Hibernate will create this value
     private int id;
-    //Java Anotations API to validate our model
+    //Java Annotations API to validate our model
     //Spring boot will generate an error message in the view
     //if the requirements are not met
     @NotNull
@@ -31,7 +31,7 @@ public class Cheese {
     }
 
     //default constructor
-    //objects will be instatiated by the framework and sometimes
+    //objects will be instantiated by the framework and sometimes
     //is there are many constructor it does not which is the
     //right one to be called
     public Cheese() {

@@ -22,7 +22,7 @@ public class CheeseController {
     //The controller should not be responsible for managing model objects
     //static make the list accessible for all methods of these class
 
-    //The framework will instatiate this class for us
+    //The framework will instantiate this class for us
     @Autowired
     private CheeseDao cheeseDao;
 
@@ -69,7 +69,7 @@ public class CheeseController {
 
     @RequestMapping(value="add", method = RequestMethod.POST)
     //When spring sees the @Valid annotation will validate the
-    //oebject according to the constraints on the model class
+    //object according to the constraints on the model class
     //and put all the error inside the object errors
     public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese,
                                         Errors errors, Model model) {

@@ -1,7 +1,8 @@
 package com.emartos.cheesemvc.controllers;
 
 import com.emartos.cheesemvc.models.Cheese;
-import com.emartos.cheesemvc.models.CheeseType;
+import com.emartos.cheesemvc.models.Category;
+import com.emartos.cheesemvc.models.data.CategoryDao;
 import com.emartos.cheesemvc.models.data.CheeseDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 //Every method below will be routed after this root path (prefix)
@@ -22,9 +25,13 @@ public class CheeseController {
     //The controller should not be responsible for managing model objects
     //static make the list accessible for all methods of these class
 
-    //The framework will instantiate this class for us
+    //The framework will instantiate this class for us and injects
+    //into the controller
     @Autowired
     private CheeseDao cheeseDao;
+
+    @Autowired
+    CategoryDao categoryDao;
 
     //Request path: /cheese
     @RequestMapping(value="")
@@ -51,7 +58,7 @@ public class CheeseController {
         //The above and below lines are equivalent
         //The default attribute name will be the name of the class
         model.addAttribute(new Cheese());
-        model.addAttribute("cheeseTypes", CheeseType.values());
+        model.addAttribute("categories", categoryDao.findAll());
         return "cheese/add";
     }
 //
@@ -71,8 +78,11 @@ public class CheeseController {
     //When spring sees the @Valid annotation will validate the
     //object according to the constraints on the model class
     //and put all the error inside the object errors
+    //The input parameter category will corresponed the a value to the post request
+    //(to this controller) to know the category of the new cheese we are creating
     public String processAddCheeseForm(@ModelAttribute @Valid Cheese newCheese,
-                                        Errors errors, Model model) {
+                                        Errors errors, @RequestParam int categoryId,
+                                        Model model) {
         //We collect the name and description fields from the view
         //and Spring will add them to the model attribute->
         //Bound model object
@@ -83,8 +93,13 @@ public class CheeseController {
          */
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
+            model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
+
+        Optional<Category> optionalCategory = categoryDao.findById(categoryId);
+        Category cat = optionalCategory.get();
+        newCheese.setCategory(cat);
         cheeseDao.save(newCheese);
         //Redirect to /cheese
         return "redirect:";
@@ -99,12 +114,26 @@ public class CheeseController {
     }
 
     @RequestMapping(value="remove", method=RequestMethod.POST)
-    public String processRemoveCheeseForm(@RequestParam int[] cheeseIds) {
+    public String processRemoveCheeseForm(@RequestParam int[] ids) {
 
-        for (int cheeseId: cheeseIds) {
-            cheeseDao.deleteById(cheeseId);
+        for (int id: ids) {
+            cheeseDao.deleteById(id);
         }
         return "redirect:";
     }
+
+    @RequestMapping(value="category", method= RequestMethod.GET)
+    public String category(Model model, @RequestParam int id) {
+
+        Optional<Category> optionalCategory = categoryDao.findById(id);
+        Category cat = optionalCategory.get();
+        List<Cheese> cheeses = cat.getCheeses();
+        model.addAttribute("cheeses", cheeses);
+        model.addAttribute("title", "Cheeses in Category:" + cat.getName());
+        return "cheese/index";
+    }
+
+
+
 
 }

@@ -22,7 +22,7 @@ public class CategoryController {
     @Autowired
     CategoryDao categoryDao;
 
-    //Request path: /cheese
+    //Request path: /category
     @RequestMapping(value="")
     public String index(Model model) {
         model.addAttribute("categories", categoryDao.findAll());

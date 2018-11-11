@@ -3,6 +3,7 @@ package com.emartos.cheesemvc.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 //This annotation says that this class
 //will be stored in a db as a table
@@ -26,6 +27,14 @@ public class Cheese {
     //sides
     @ManyToOne
     private Category category;
+
+    //Hibernate will look at the cheeses property at menu class
+    //One side at least has to have this mappedBy attr.
+    //There is tecnically no owning class in a many-to-may rel.
+    //The join column will be automatically created
+    @ManyToMany(mappedBy = "cheeses")
+    private List<Menu> menus;
+
 
     public Cheese(String name, String description) {
         this.name = name;

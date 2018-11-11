@@ -10,6 +10,7 @@ file -> reusing common code-->
     <!-- TH syntax is similar as HTML regarding attributes-->
      <h1 th:text="${title}"></h1>
     <nav th:replace="fragments :: navigation"></nav>
+
 <p th:unless="${cheeses} and ${cheeses.size()}">no cheese</p>
 
 <table class="table">
@@ -27,6 +28,9 @@ file -> reusing common code-->
         <td th:text="${cheese.category.name}"></td>
     </tr>
 </table>
+
+    <a href="/cheese/add">Add</a> |
+    <a href="/cheese/remove">Remove</a>
 
 </body>
 </html>

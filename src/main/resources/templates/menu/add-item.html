@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${title}"></h1>
+        <nav th:replace="fragments :: navigation"></nav>
+
+        <!-- The form will be rendered with the URL that contains a int
+        of a particular menu, so we want the form to be processed to
+        a URL that gets rid of this value, and looks for the add-item POST
+        handler-->
+        <form method="post"
+              th:object="${form}" action="/menu/add-item">
+            <!-- Pick a available cheese to add to the menu -->
+            <div class="form-group">
+                <label th:for="cheeseId">Cheese</label>
+                <select name="cheeseId">
+                <option th:each="cheese : *{cheeses}"
+                        th:text="${cheese.name}"
+                        th:value="${cheese.id}"></option>
+                </select>
+            </div>
+
+            <!-- hidden input to the user to know which menu receives the cheese-->
+            <input type="hidden" name="menuId" th:value ="*{menu.id}"/>
+
+            <input type="submit" value ="Add Cheese"/>
+        </form>
+
+</body>
+</html>

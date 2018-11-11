@@ -6,9 +6,11 @@
 <!-- TH syntax is similar as HTML regarding attributes-->
 <h1 th:text="${title}"></h1>
 <nav th:replace="fragments :: navigation"></nav>
-<br>
-<ul th:each="category : ${categories}">
-    <li><a th:text="${category.name}" href="/cheese/category"></a></li>
+
+<ul>
+    <li th:each="category : ${categories}">
+        <a th:text="${category.name}" th:href="@{/cheese/category(id=${category.id})}"></a>
+    </li>
 </ul>
 
 <a href="/category/add">Add Category</a>

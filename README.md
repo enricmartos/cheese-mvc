@@ -8,7 +8,7 @@ menus as well. These menus are composed of several types of cheeses.
 ## Personal goals
 
 - To get familiar with Spring Boot framework and learn how to perform basic CRUD operations
-- To acquire experience with ORM (Object-Relational Mapping) and JPA (Java Persistence API). Spefically, One-to-Many
+- To acquire experience with ORM (Object-Relational Mapping) and JPA (Java Persistence API). Specifically, One-to-Many
 and Many-to-Many relationships
 - To start using Thymeleaf as a front-end template engine.
 - To implement custom model validations

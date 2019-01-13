@@ -49,7 +49,7 @@ CREATE SCHEMA `cheese-mvc` ;
 
 - Run the project as Spring Boot App
 
-- Open your browser and test the application on *localhost:8080*
+- Open your browser and test the application on *localhost:8080/cheese*
 
 ## References
 

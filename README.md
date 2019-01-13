@@ -2,8 +2,7 @@
 
 ## Description
 
-This application is a restaurant management system which allows you to see, edit and delete all menus entries. You can add new
-menus as well. These menus are composed of several types of cheeses.
+This application is a management system for a restaurant which allows you to see, edit and delete all menus entries. You can add new menus as well. These menus are composed of several types of cheeses.
 
 ## Personal goals
 
@@ -13,7 +12,7 @@ and Many-to-Many relationships
 - To start using Thymeleaf as a front-end template engine.
 - To implement custom model validations
 
-## Core technologies
+## Stack
 
 *Front-end*
 - Thymeleaf
@@ -36,6 +35,12 @@ and Many-to-Many relationships
 - IntelliJ IDEA
 
 ## Build setup
+
+### With Docker
+
+- Clone this repo to your local machine.
+
+### Withour Docker
 
 - Clone this repo to your local machine. If you use IntelliJ as IDE, open this project there.
 

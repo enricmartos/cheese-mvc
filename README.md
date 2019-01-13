@@ -39,12 +39,28 @@ and Many-to-Many relationships
 ### With Docker
 
 - Clone this repo to your local machine.
+```
+# Start docker-compose
 
-### Withour Docker
+$ docker-compose up
+```
+
+This command creates the three docker containers detailed below:
+
+- _cheese-mvc_app_1_: Main container of the Spring Boot application
+
+- _cheese-mvc_mysql_1_: DB container
+
+- _cheese-mvc_adminer_1_: DB management tool to interact with the MySQL DB
+
+Adminer's credentials are the ones defined in .env file.
+
+
+### Without Docker
 
 - Clone this repo to your local machine. If you use IntelliJ as IDE, open this project there.
 
-- MySQL and MySQL Workbench must be already installed in your machine. Otherwise, you will have to install them. Please notice that the default parameters (port, username and password) to enable the MySQL connection are defined on application.properties file. So, feel free to edit them in order to match one of your MySQL connections.
+- MySQL (and MySQL Workbench, optionally) must be already installed in your machine. Otherwise, you will have to install them. Please notice that the default parameters (port, username and password) to enable the MySQL connection are defined on application.properties file. So, feel free to edit them in order to match one of your MySQL connections.
 
 ```
 # Create the db

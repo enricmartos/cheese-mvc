@@ -25,4 +25,5 @@ ADD $APP_HOME/build/libs/$ARTIFACT_NAME $ARTIFACT_NAME
 # expose the port (configured on app.props server port)
 EXPOSE 8086
 # CMD ["java","-jar",$ARTIFACT_NAME]
-ENTRYPOINT ["java", "-jar", "cheese-mvc.jar"]
+# ENTRYPOINT ["java", "-jar", "cheese-mvc.jar"]
+ENTRYPOINT ["java", "-jar", $ARTIFACT_NAME]

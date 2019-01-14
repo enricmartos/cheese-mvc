@@ -24,6 +24,7 @@ group = 'com.emartos'
 version = '1.0-SNAPSHOT'
 
 bootJar {
+	mainClassName = 'com.emartos.cheesemvc.CheeseMvcApplication'
 	baseName = 'cheese-mvc'
 	version =  '0.1.0'
 }

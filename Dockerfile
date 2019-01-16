@@ -22,6 +22,7 @@ COPY --from=TEMP_BUILD_IMAGE $APP_HOME/build/libs/$ARTIFACT_NAME .
 # expose the port (configured on app.props server port)
 EXPOSE 8086
 CMD exec java -jar $ARTIFACT_NAME
+
 # CMD ["java", "-jar", $ARTIFACT_NAME]
 # ENTRYPOINT ["java", "-jar", "cheese-mvc.jar"]
 # ENTRYPOINT ["java", "-jar", $ARTIFACT_NAME]

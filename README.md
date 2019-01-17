@@ -55,6 +55,8 @@ This command creates the three docker containers detailed below:
 
 Adminer's credentials are the ones defined in .env file.
 
+- Open your browser and test the application on *localhost:8086/cheese*
+
 
 ### Without Docker
 
@@ -70,7 +72,7 @@ CREATE SCHEMA `cheese-mvc` ;
 
 - Run the project as Spring Boot App
 
-- Open your browser and test the application on *localhost:8080/cheese*
+- Open your browser and test the application on *localhost:8086/cheese*
 
 ## References
 

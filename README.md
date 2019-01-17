@@ -31,8 +31,8 @@ and Many-to-Many relationships
 *Dependency management tool*
 - Gradle
 
-*IDE*
-- IntelliJ IDEA
+*Containerization*
+- Docker-compose
 
 ## Build setup
 

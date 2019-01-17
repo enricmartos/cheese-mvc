@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is a management system for a restaurant which allows you to see, edit and delete all menus entries. You can add new menus as well. These menus are composed of several types of cheeses.
+This application is a management system for a restaurant which allows you to see, edit and delete menu entries. You can add new menus as well, which are composed of several types of cheeses.
 
 ## Personal goals
 

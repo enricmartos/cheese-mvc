@@ -25,7 +25,6 @@ group = 'com.github.enricmartos'
 bootJar {
 	mainClassName = 'com.emartos.cheesemvc.CheeseMvcApplication'
 	baseName = 'cheese-mvc'
-	version = '1.0'
 }
 
 sourceCompatibility = 1.8
@@ -58,6 +57,21 @@ task buildDocker (type:Docker, dependsOn: build) {
             into stageDir
         }
     }
+}
+
+// To specify a license in the pom:
+install {
+	repositories.mavenInstaller {
+		pom.project {
+			licenses {
+				license {
+					name 'The Apache Software License, Version 2.0'
+					url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+					distribution 'repo'
+				}
+			}
+		}
+	}
 }
 
 bootRun {

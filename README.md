@@ -38,7 +38,7 @@ and Many-to-Many relationships
 
 ### With Docker
 
-- Clone this repo to your local machine.
+- Clone this repo to your local machine.Docker-compose version must above 1.18 (Upgrade docker-compose to the latest version)[https://stackoverflow.com/questions/49839028/how-to-upgrade-docker-compose-to-latest-version]. Don't forget to restart your shell after performing all the steps.
 ```
 # Start docker-compose
 

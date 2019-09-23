@@ -12,6 +12,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -19,7 +20,7 @@ apply plugin: 'docker'
 
 description = "cheese-mvc"
 
-group = 'com.emartos'
+group = 'com.github.emartos'
 
 bootJar {
 	mainClassName = 'com.emartos.cheesemvc.CheeseMvcApplication'

@@ -20,7 +20,7 @@ apply plugin: 'docker'
 
 description = "cheese-mvc"
 
-group = 'com.github.emartos'
+group = 'com.github.enricmartos'
 
 bootJar {
 	mainClassName = 'com.emartos.cheesemvc.CheeseMvcApplication'

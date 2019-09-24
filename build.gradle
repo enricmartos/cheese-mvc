@@ -77,3 +77,7 @@ install {
 bootRun {
 	sourceResources sourceSets.main
 }
+
+jar {
+	jar.archiveName = "cheese-mvc.jar"
+}
